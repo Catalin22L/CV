@@ -1,0 +1,34 @@
+@import './fonts.css';
+@import './tailwind.css';
+@import './theme.css';
+
+/* Print styles for PDF export */
+@media print {
+  body {
+    background: white !important;
+  }
+  .cursor-pointer {
+    cursor: default !important;
+  }
+  .shadow-sm, .shadow-xl, .shadow-2xl {
+    box-shadow: none !important;
+  }
+  .bg-slate-100 {
+    background: white !important;
+  }
+  .print\\:shadow-none {
+    box-shadow: none !important;
+  }
+  .print\\:bg-white {
+    background: white !important;
+  }
+  .print\\:hidden {
+    display: none !important;
+  }
+  .print\\:block {
+    display: block !important;
+  }
+  .print\\:w-full {
+    width: 100% !important;
+  }
+}
