@@ -5,10 +5,10 @@
 /* Print styles for PDF export */
 @media print {
   body {
-    background: white !important;
-  }
-  .cursor-pointer {
-    cursor: default !important;
+    margin: 0;
+    padding: 0;
+    -webkit-print-color-adjust: exact !important; /* Forțează culorile de fundal în Chrome/Edge/Safari */
+      print-color-adjust: exact !important;
   }
   .shadow-sm, .shadow-xl, .shadow-2xl {
     box-shadow: none !important;
