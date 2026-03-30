@@ -4,31 +4,66 @@
 
 /* Print styles for PDF export */
 @media print {
+  @page {
+    margin: 0; 
+    size: A4;
+  }
+
   body {
     margin: 0;
     padding: 0;
-    -webkit-print-color-adjust: exact !important; /* Forțează culorile de fundal în Chrome/Edge/Safari */
-      print-color-adjust: exact !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    background-color: white !important;
   }
-  .shadow-sm, .shadow-xl, .shadow-2xl {
-    box-shadow: none !important;
-  }
-  .bg-slate-100 {
-    background: white !important;
-  }
-  .print\\:shadow-none {
-    box-shadow: none !important;
-  }
-  .print\\:bg-white {
-    background: white !important;
-  }
-  .print\\:hidden {
-    display: none !important;
-  }
-  .print\\:block {
-    display: block !important;
-  }
-  .print\\:w-full {
+
+  /* TRUCUL SUPREM: Vopsim containerul principal cu un gradient dublu.
+     Partea stângă va fi 32% albastru închis, partea dreaptă va fi 68% alb.
+     Acest fundal nu se va tăia niciodată, pe nicio pagină! */
+  .flex.flex-col.md\:flex-row {
+    display: flex !important;
+    flex-direction: row !important;
     width: 100% !important;
+    min-height: 100vh !important;
+    background: linear-gradient(to right, #0f172a 0%, #0f172a 32%, white 32%, white 100%) !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Deoarece fundalul are deja culorile, facem ambele coloane transparente */
+  aside { 
+    background-color: transparent !important; 
+    width: 32% !important;
+    color: white !important;
+  }
+
+  main {
+    width: 68% !important;
+    background-color: transparent !important; 
+    padding: 30px !important;
+  }
+
+  /* Aliniem Hobby-urile la același nivel cu Proiectele Personale */
+  aside > div:nth-child(5) {
+    margin-top: 1rem !important; 
+  }
+
+  /* Evităm tăierea urâtă a elementelor între pagini */
+  section, .project-card, .cv-item {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* IMAGINEA: Garanția că rămâne mare și la locul ei */
+  .print-force-show, .print-force-show img {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    break-inside: avoid !important;
+  }
+
+  /* Ascundem butoanele și interfața inutilă pe foaie */
+  .print\:hidden, .cursor-pointer, button {
+    display: none !important;
   }
 }

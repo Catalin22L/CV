@@ -7,7 +7,7 @@ import puppeteer from "puppeteer";
   // Set viewport to match typical screen
   await page.setViewport({ width: 1200, height: 800 });
 
-  await page.goto("http://localhost:5175", { waitUntil: "networkidle0" });
+  await page.goto("http://localhost:5173", { waitUntil: "networkidle0" });
 
   await page.pdf({
     path: "cv-export.pdf",
